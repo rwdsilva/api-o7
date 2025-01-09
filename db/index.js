@@ -1,12 +1,18 @@
-const mongoose = require("mongoose");
+const { MongoClient } = require('mongodb');
 
-mongoose.connect(
-  "mongodb+srv://rwdsilva:Vehwes123@n@cluster0.hcp4c.mongodb.net/<dbname>?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+const uri = "mongodb+srv://rwdsilva:Vehwes123%40@cluster0.hcp4c.mongodb.net/meuBancoDeDados?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function run() {
+  try {
+    await client.connect();
+    console.log("Conectado ao MongoDB Atlas!");
+    // Sua lógica adicional...
+  } catch (err) {
+    console.error("Erro na conexão:", err);
+  } finally {
+    await client.close();
   }
-);
-mongoose.Promise = global.Promise;
+}
 
-module.exports = mongoose;
+run();
