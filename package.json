@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index"
+    "dev": "vercel dev",
+    "start": "vercel"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
